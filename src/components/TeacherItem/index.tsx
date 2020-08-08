@@ -2,39 +2,54 @@ import React from "react";
 import "./styles.css";
 import "../../assets/styles/global.css";
 import wpp from "../../assets/images/icons/whatsapp.svg";
+import api from "../../service/api";
 
-function TeacherItem() {
+export interface Teacher {
+  id: number;
+  avatar: string;
+  bio: string;
+  cost: number;
+  name: string;
+  subject: string;
+  whatsapp: string;
+}
+interface TeacherItemProps {
+  teacher: Teacher;
+}
+
+const TeacherItem: React.FC<TeacherItemProps> = ({ teacher }) => {
+  function createNewConnection() {
+    api.post("connections", {
+      user_id: teacher.id,
+    });
+  }
+
   return (
     <article className="teacher-item">
       <header>
-        <img
-          src="https://avatars3.githubusercontent.com/u/53823948?s=460&u=8413d96db8f8c9d4ae05905dfc7982c58489700f&v=4"
-          alt="Anna Rafaela"
-        />
+        <img src={teacher.avatar} alt="Avatar" />
         <div>
-          <strong>Anna Rafaela</strong>
-          <span>Algoritmos</span>
+          <strong>{teacher.name}</strong>
+          <span>{teacher.subject}</span>
         </div>
       </header>
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-        <br /> <br />
-        Nunc non justo eu nisi rutrum efficitur eu eget justo. Etiam vestibulum
-        sem vulputate, sagittis risus id, porttitor nisi. Nam euismod nisi et
-        diam tempus, et ornare ligula imperdiet.
-      </p>
+      <p>{teacher.bio}</p>
       <footer>
         <p>
           Preço/Hora
-          <strong>R$ 80,00</strong>
+          <strong>R$ {teacher.cost}</strong>
         </p>
-        <button type="button">
+        <a
+          onClick={createNewConnection}
+          target="blanck"
+          href={`https://wa.me/${teacher.whatsapp}?text=Olá%20Proffy%20,%20gostaria%20de%20agendar%20uma%20aula!`}
+        >
           Entrar em Contato
           <img src={wpp} alt="WhatsApp" />
-        </button>
+        </a>
       </footer>
     </article>
   );
-}
+};
 
 export default TeacherItem;
