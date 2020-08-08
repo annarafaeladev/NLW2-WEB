@@ -1,11 +1,9 @@
 #page-landing {
   width: 100vw;
   height: 100vh;
-
   display: flex;
   justify-content: center;
   align-items: center;
-
   color: var(--color-text-in-primary);
   background: var(--color-primary);
 }
@@ -15,7 +13,13 @@
 }
 
 .hero-image {
+  width: 85%;
+}
+
+#view-image {
   width: 100%;
+  display: flex;
+  justify-content: center;
 }
 .logo-container {
   text-align: center;
@@ -87,10 +91,9 @@
   margin-left: 0.8rem;
 }
 
-@media (min-width: 1100px) {
+@media (min-width: 969px) {
   #page-landing-content {
     max-width: 1100px !important;
-
     display: grid;
     grid-template-rows: 450px 1fr;
     grid-template-columns: 2fr 1fr 1fr;
@@ -116,8 +119,13 @@
   }
 
   .hero-image {
+    justify-self: center;
+    width: 100%;
+  }
+
+  #view-image {
     grid-area: hero;
-    justify-self: end;
+    width: 50vw;
   }
 
   .button-container {
@@ -130,6 +138,5 @@
   }
   .total-connections {
     grid-area: total;
-    justify-self: end;
   }
 }
