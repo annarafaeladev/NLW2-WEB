@@ -5,7 +5,7 @@
 1.Desenvolver a aplicação web do projeto Proffy - Done :heavy_check_mark:
   
 2. Instalação: 
-  - git clone https://github.com/Anna18921/NLW2-MOBILE.git
+  - git clone https://github.com/Anna18921/NLW2-WEB.git
   -  Execução do Mobile: yarn start
   - rodar a api: 
     - baixar : git clone https://github.com/Anna18921/NLW2-API.git
